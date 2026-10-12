@@ -63,6 +63,9 @@ h2{margin:0;font-size:22px;text-align:center;color:var(--deep)}
 .bubble{position:absolute;top:0;left:50%;transform:translateX(16px);background:var(--card);border-radius:18px;padding:8px 12px;
   font-size:15px;box-shadow:var(--shadow);max-width:150px;line-height:1.35}
 .bubble::after{content:"";position:absolute;left:-8px;bottom:12px;border:8px solid transparent;border-right-color:#fff;border-left:0}
+.home-buddy{flex-direction:column;align-items:center;gap:12px}
+.home-buddy .bubble{position:relative;left:auto;transform:none;max-width:none;text-align:center;padding:8px 16px}
+.home-buddy .bubble::after{left:50%;bottom:-8px;margin-left:-8px;border:8px solid transparent;border-top-color:#fff;border-bottom:0}
 .sakura-bg{position:absolute;inset:auto 0 0 0;height:30px;background:radial-gradient(ellipse at center,rgba(255,127,168,.18),transparent 70%)}
 
 /* progress */
@@ -72,8 +75,8 @@ h2{margin:0;font-size:22px;text-align:center;color:var(--deep)}
 .home-progress .meter{flex:1}
 
 /* play */
-.dots{display:flex;gap:5px;justify-content:center;flex-wrap:wrap}
-.dots i{width:14px;height:14px;border-radius:50%;background:var(--gray);display:block}
+.dots{display:flex;gap:4px;justify-content:center;flex-wrap:wrap;flex:1;min-width:0}
+.dots i{width:11px;height:11px;border-radius:50%;background:var(--gray);display:block}
 .dots i.ok3{background:var(--deep)} .dots i.ok2{background:var(--pink)} .dots i.ok1{background:var(--pink2)}
 .dots i.ng{background:var(--sky)} .dots i.now{outline:3px solid var(--pink);outline-offset:1px}
 .play-buddy{display:flex;align-items:flex-end;justify-content:center;gap:6px;min-height:96px;position:relative}
@@ -81,10 +84,10 @@ h2{margin:0;font-size:22px;text-align:center;color:var(--deep)}
 .play-buddy .bubble{position:static;transform:none;margin-bottom:40px}
 .play-buddy .bubble::after{display:none}
 .q-card{background:var(--card);border-radius:28px;padding:14px 10px 12px;box-shadow:var(--shadow);text-align:center;position:relative;overflow:hidden}
-.q{font-size:64px;font-weight:800;letter-spacing:.02em;line-height:1.15;display:flex;justify-content:center;align-items:center;gap:10px}
+.q{font-size:clamp(40px,13vw,64px);font-weight:800;letter-spacing:.02em;line-height:1.15;display:flex;justify-content:center;align-items:center;gap:clamp(4px,1.6vw,10px)}
 .q .op{color:var(--pink)}
 .q .ten{color:var(--deep)}
-.ans{min-width:80px;height:80px;border-radius:18px;background:var(--bg);border:3px dashed var(--pink2);display:inline-flex;align-items:center;justify-content:center;color:var(--deep)}
+.ans{min-width:clamp(60px,18vw,80px);height:clamp(60px,18vw,80px);border-radius:18px;background:var(--bg);border:3px dashed var(--pink2);display:inline-flex;align-items:center;justify-content:center;color:var(--deep)}
 .ans.fill{border-style:solid;border-color:var(--pink)}
 .ans.ng{border-color:var(--sky);background:#eef4ff;color:#5677c9}
 .live{display:flex;align-items:center;gap:10px;justify-content:center;margin-top:8px;height:30px}
@@ -163,7 +166,7 @@ h2{margin:0;font-size:22px;text-align:center;color:var(--deep)}
 .toast.on{opacity:1;transform:translateX(-50%)}
 
 @media (max-height:700px){
-  .q{font-size:52px} .ans{height:66px;min-width:80px} .pad button{height:58px;font-size:30px}
+  .q{font-size:clamp(40px,12vw,52px)} .ans{height:clamp(56px,16vw,66px);min-width:clamp(56px,16vw,66px)} .pad button{height:58px;font-size:30px}
   .play-buddy{min-height:72px} .play-buddy img{height:72px} .buddy{height:120px} .buddy-wrap{min-height:120px}
 }
 </style>
@@ -178,10 +181,10 @@ h2{margin:0;font-size:22px;text-align:center;color:var(--deep)}
       <span class="star-pill">⭐ <span class="js-stars">0</span></span>
     </div>
     <h1><small>ぬいぐるみと いっしょに</small>10の なかよし</h1>
-    <div class="buddy-wrap">
+    <div class="buddy-wrap home-buddy">
       <div class="sakura-bg"></div>
-      <img class="buddy" id="homeBuddy" alt="">
       <div class="bubble" id="homeBubble">きょうも いっしょに がんばろう！</div>
+      <img class="buddy" id="homeBuddy" alt="">
     </div>
     <div class="card">
       <div class="home-progress">
@@ -301,7 +304,7 @@ h2{margin:0;font-size:22px;text-align:center;color:var(--deep)}
       <div class="p-row">1回の問題数
         <select id="setLen"><option value="10">10問</option><option value="15">15問</option><option value="20">20問</option></select></div>
       <div class="p-row">プレゼントに必要な ⭐
-        <select id="setCost"><option value="15">15</option><option value="20">20</option><option value="30">30</option><option value="40">40</option></select></div>
+        <select id="setCost"><option value="20">20</option><option value="30">30</option><option value="40">40</option><option value="60">60</option></select></div>
       <div class="p-row">おと
         <select id="setSound"><option value="1">あり</option><option value="0">なし</option></select></div>
     </div>
@@ -365,7 +368,7 @@ FACTS.forEach(function(f){ FACT_BY_KEY[f.k] = f; });
 var KEY = 'tenNakayoshi_v1';
 function defaults(){
   return {v:1, stars:0, owned:{rabbit:true}, buddy:'rabbit', stats:{},
-          T:2000, len:10, cost:20, sound:true, daily:{}, lastAvg:0, rounds:0, starsTotal:0, opened:1};
+          T:2000, len:10, cost:40, sound:true, cfg:2, daily:{}, lastAvg:0, rounds:0, starsTotal:0, opened:1};
 }
 var save = defaults();
 function load(){
@@ -378,6 +381,8 @@ function merge(d){
   var base = defaults();
   Object.keys(base).forEach(function(k){ if (d && d[k] !== undefined) base[k] = d[k]; });
   if (!PLUSH_BY_ID[base.buddy]) base.buddy = 'rabbit';
+  /* まえの セーブは プレゼント ⭐20 だったので ⭐40 に そろえる */
+  if (!d || !d.cfg){ base.cost = 40; base.cfg = 2; }
   save = base;
 }
 function persist(){
