@@ -78,6 +78,7 @@ var DEFS = '<style>.iso *{vector-effect:non-scaling-stroke}</style><defs>' +
     star(0.5, 0.6, 0.14, 0.06, '#ffe58a') + star(1.6, 1.5, 0.1, 0.045, '#fff6c8') + '<circle cx="1.5" cy="0.4" r="0.035" fill="#cdd6ff"/><circle cx="0.7" cy="1.7" r="0.03" fill="#cdd6ff"/></pattern>' +
   '<pattern id="p_st_floor" width="1.6" height="1.6" patternUnits="userSpaceOnUse"><rect width="1.6" height="1.6" fill="#3a4280"/><rect width="1.6" height="0.05" fill="#4c56a3"/><rect width="0.05" height="1.6" fill="#4c56a3"/><circle cx="0.8" cy="0.8" r="0.04" fill="#8f9ae0"/></pattern>' +
   '<radialGradient id="g_glow"><stop offset="0" stop-color="#fff6c8" stop-opacity=".75"/><stop offset="1" stop-color="#fff6c8" stop-opacity="0"/></radialGradient>' +
+  '<radialGradient id="g_pool"><stop offset="0" stop-color="#fff3a0" stop-opacity=".95"/><stop offset=".6" stop-color="#ffe58a" stop-opacity=".5"/><stop offset="1" stop-color="#ffe58a" stop-opacity="0"/></radialGradient>' +
   '<linearGradient id="g_gold" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#ffe9a0"/><stop offset="1" stop-color="#e0a92e"/></linearGradient>' +
 '</defs>';
 
@@ -323,21 +324,23 @@ function lampStar(){
     star(28, 32, 20, 9, '#ffe58a', ' stroke="#f2c14e" stroke-width="1.5" stroke-linejoin="round"'));
 }
 function chandelier(){
-  var t = P(TC[0], TC[1], 7.2), w = 96;
+  /* てんじょう（たかさ 7）の テーブルの まうえに きんぐを つけて、みじかい くさりで さげる */
+  var c = P(TC[0], TC[1], H), w = 70, drop = 12;
   var crys = '';
-  [12, 30, 48, 66, 84].forEach(function(x, i){
-    var y = i % 2 ? 58 : 52;
-    crys += '<line x1="' + x + '" y1="' + (y-12) + '" x2="' + x + '" y2="' + y + '" stroke="#e0a92e" stroke-width="1"/>' +
-            '<path d="M' + x + ' ' + y + ' l-4 6 l4 8 l4 -8z" fill="#cfeaff" stroke="#9fc8ee" stroke-width=".8"/>';
+  [10, 22.5, 35, 47.5, 60].forEach(function(x, i){
+    var y = i % 2 ? 27 : 24;
+    crys += '<line x1="' + x + '" y1="' + (y-8) + '" x2="' + x + '" y2="' + y + '" stroke="#e0a92e" stroke-width="1"/>' +
+            '<path d="M' + x + ' ' + y + ' l-3 4.5 l3 6 l3 -6z" fill="#cfeaff" stroke="#9fc8ee" stroke-width=".8"/>';
   });
-  return '<g transform="translate(' + fx(t[0] - w/2) + ' ' + fx(t[1]) + ')">' +
-    '<circle cx="48" cy="40" r="44" fill="url(#g_glow)"/>' +
-    '<line x1="48" y1="0" x2="48" y2="22" stroke="#e0a92e" stroke-width="2"/>' +
-    '<path d="M8 38 Q48 62 88 38" fill="none" stroke="url(#g_gold)" stroke-width="5" stroke-linecap="round"/>' +
-    '<ellipse cx="48" cy="30" rx="12" ry="9" fill="url(#g_gold)"/>' +
-    '<rect x="6" y="26" width="5" height="12" fill="#fffaf0"/><rect x="85" y="26" width="5" height="12" fill="#fffaf0"/><rect x="45.5" y="12" width="5" height="10" fill="#fffaf0"/>' +
-    '<path d="M8.5 20 q-2 3 0 5 q2 -2 0 -5z" fill="#ffb84d"/><path d="M87.5 20 q-2 3 0 5 q2 -2 0 -5z" fill="#ffb84d"/>' +
-    crys + star(20, 14, 5, 2, '#fff6c8') + star(78, 10, 4, 1.6, '#fff6c8') + '</g>';
+  return '<ellipse cx="' + fx(c[0]) + '" cy="' + fx(c[1]) + '" rx="7" ry="3.5" fill="url(#g_gold)" stroke="#c99520" stroke-width=".8"/>' +
+    '<line x1="' + fx(c[0]) + '" y1="' + fx(c[1]) + '" x2="' + fx(c[0]) + '" y2="' + fx(c[1] + drop + 4) + '" stroke="#e0a92e" stroke-width="1.6"/>' +
+    '<g transform="translate(' + fx(c[0] - w/2) + ' ' + fx(c[1] + drop) + ')">' +
+    '<circle cx="35" cy="16" r="32" fill="url(#g_glow)"/>' +
+    '<path d="M5 14 Q35 32 65 14" fill="none" stroke="url(#g_gold)" stroke-width="4" stroke-linecap="round"/>' +
+    '<ellipse cx="35" cy="8" rx="9" ry="6.5" fill="url(#g_gold)" stroke="#c99520" stroke-width=".8"/>' +
+    '<rect x="2.5" y="5" width="5" height="9" rx="1" fill="#fffaf0"/><rect x="62.5" y="5" width="5" height="9" rx="1" fill="#fffaf0"/>' +
+    '<path d="M5 0 q-2 3 0 4.5 q2 -1.5 0 -4.5z" fill="#ffb84d"/><path d="M65 0 q-2 3 0 4.5 q2 -1.5 0 -4.5z" fill="#ffb84d"/>' +
+    crys + star(18, 4, 3.5, 1.5, '#fff6c8') + star(53, 2, 3, 1.3, '#fff6c8') + '</g>';
 }
 
 /* ---------- こもの ---------- */
@@ -375,19 +378,23 @@ function smallTrophy(ctx){
     star(22, 15, 6, 2.6, '#fff6c8') +
     '<rect x="19" y="31" width="6" height="8" fill="#e0a92e"/><rect x="11" y="39" width="22" height="9" rx="2" fill="#a86f3c"/><rect x="15" y="41.5" width="14" height="4" rx="1" fill="#ffe9a0"/>');
 }
-function smallSakura(){
+function smallSakura(ctx){
+  /* はちうえの ミニチュアの さくら（テーブルに のる） */
   var bl = '';
-  [[30,40,22],[58,34,24],[44,22,22],[72,52,18],[18,58,16],[50,54,20]].forEach(function(c){
+  [[14,22,9],[24,14,10],[34,21,9],[19,29,8],[30,30,7.5],[24,24,8]].forEach(function(c){
     bl += '<circle cx="' + c[0] + '" cy="' + c[1] + '" r="' + c[2] + '" fill="#ffc2d6"/>';
   });
   var pet = '';
-  [[22,30],[60,22],[78,44],[40,48],[12,52],[66,62],[46,14],[30,66]].forEach(function(c){
-    pet += '<circle cx="' + c[0] + '" cy="' + c[1] + '" r="2.5" fill="#fff"/>';
+  [[12,19],[22,10],[33,17],[18,29],[30,28],[26,21],[37,24]].forEach(function(c){
+    pet += '<circle cx="' + c[0] + '" cy="' + c[1] + '" r="1.6" fill="#fff"/>';
   });
-  return sprite(8.4, 8.3, 0, 92, 130,
-    '<path d="M40 130 L44 74 Q36 66 26 64 Q40 64 46 70 Q50 60 60 56 Q54 66 52 76 L56 130Z" fill="#a8744a" stroke="rgba(90,58,74,.25)"/>' +
-    bl + '<circle cx="46" cy="40" r="22" fill="#ffb0c8"/>' + pet +
-    '<ellipse cx="48" cy="128" rx="26" ry="5" fill="rgba(255,176,200,.5)"/>');
+  return smallAt(ctx, 48, 60,
+    '<path d="M23 46 L23.5 34 Q19 30 15 28 Q21 29 24 32 Q26 26 31 23 Q27 29 26 35 L27 46Z" fill="#a8744a"/>' +
+    bl + '<circle cx="24" cy="22" r="5" fill="#ffb0c8"/>' + pet +
+    '<circle cx="42" cy="38" r="1.8" fill="#ffc2d6"/><circle cx="6" cy="40" r="1.6" fill="#ffc2d6"/>' +
+    '<rect x="10" y="44" width="28" height="5" rx="2" fill="#fff" stroke="rgba(90,58,74,.25)"/>' +
+    '<path d="M12 49 L36 49 L33 60 L15 60Z" fill="#fffaf5" stroke="rgba(90,58,74,.25)"/>' +
+    '<rect x="13.2" y="52" width="21.6" height="2.6" fill="#ffb7cf"/>');
 }
 
 /* ---------- アイテム いちらん ---------- */
@@ -435,7 +442,7 @@ var ITEMS = [
    hint:'全部{ぜんぶ}正解{せいかい}で平均{へいきん}1秒{びょう}以内{いない}'},
   {id:'sp_trophy',     theme:'special', slot:'small',  name:'金{きん}のトロフィー',     draw:smallTrophy,
    hint:'9問{もん}全部{ぜんぶ}を「ばっちり」にする'},
-  {id:'sp_sakura',     theme:'special', slot:'small',  name:'桜{さくら}の木{き}',           draw:smallSakura, big:true,
+  {id:'sp_sakura',     theme:'special', slot:'small',  name:'桜{さくら}の木{き}',           draw:smallSakura,
    hint:'7日{にち}続{つづ}けて遊{あそ}ぶ'}
 ];
 var ITEM_BY_ID = {};
@@ -473,6 +480,11 @@ function renderRoom(room, buddyImg){
   s.push(itemSVG(g('bed')));
   if (light && !light.hanging) s.push(itemSVG(light));
   s.push(itemSVG(table));
+  /* シャンデリアの まどの ひかり：まうえから テーブル（なければ ゆか）を てらす */
+  if (light && light.hanging){
+    var lp = P(TC[0], TC[1], tableTop);
+    s.push('<ellipse cx="' + fx(lp[0]) + '" cy="' + fx(lp[1]) + '" rx="' + fx(1.2247*1.9*S) + '" ry="' + fx(0.7071*1.9*S) + '" fill="url(#g_pool)"/>');
+  }
   if (small) s.push(itemSVG(small, {tableTop: small.big ? 0 : tableTop}));
   s.push(itemSVG(sofaIt));
   if (buddyImg){
