@@ -154,6 +154,22 @@ h2{margin:0;font-size:22px;text-align:center;color:var(--deep)}
 @keyframes spark{from{opacity:1;transform:translate(0,0) scale(1)}to{opacity:0;transform:translate(var(--dx),var(--dy)) scale(.4) rotate(180deg)}}
 
 rt{font-size:.5em;font-weight:700;letter-spacing:0}
+/* quit popup */
+.modal{position:fixed;inset:0;background:rgba(90,58,74,.35);display:none;align-items:center;justify-content:center;z-index:70;padding:16px}
+.modal.on{display:flex;animation:fadein .2s ease}
+.modal-card{background:#fff;border-radius:30px;padding:22px 18px 18px;width:100%;max-width:340px;text-align:center;position:relative;
+  box-shadow:0 8px 0 rgba(232,85,138,.2),0 18px 40px rgba(90,58,74,.25);animation:popin .45s cubic-bezier(.2,1.6,.4,1)}
+.modal-card .say{display:inline-block;background:var(--pink3);color:var(--deep);border-radius:18px;padding:8px 16px;font-size:16px;position:relative;margin-bottom:12px}
+.modal-card .say::after{content:"";position:absolute;left:50%;bottom:-8px;margin-left:-8px;border:8px solid transparent;border-top-color:var(--pink3);border-bottom:0}
+.modal-card img{height:110px;display:block;margin:0 auto;animation:sway 2.4s ease-in-out infinite;transform-origin:50% 100%}
+@keyframes sway{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
+.modal-card h3{font-size:22px;color:var(--deep);margin:10px 0 4px}
+.modal-card p{font-size:15px;color:var(--ink2);margin:0 0 16px}
+.modal-btns{display:flex;flex-direction:column;gap:10px}
+.modal-btns .big-btn{font-size:22px;padding:14px}
+.btn-soft{background:var(--bg);border-radius:20px;padding:12px;font-size:16px;color:var(--ink2)}
+.btn-soft:active{transform:translateY(2px)}
+.modal-card .hearts{position:absolute;font-size:18px;color:var(--pink2);pointer-events:none}
 /* home 4 buttons */
 .sub-row.four{grid-template-columns:1fr 1fr}
 .four .sub-btn{display:flex;align-items:center;gap:6px;padding:12px 10px;text-align:left;font-size:15px;white-space:nowrap}
@@ -397,9 +413,22 @@ rt{font-size:.5em;font-weight:700;letter-spacing:0}
     </div>
   </section>
 </div>
+<div class="modal" id="quitModal">
+  <div class="modal-card">
+    <span class="hearts" style="top:14px;left:18px">♥</span><span class="hearts" style="top:34px;right:20px;font-size:14px">✿</span><span class="hearts" style="bottom:110px;left:24px;font-size:13px">✦</span>
+    <div class="say">もうちょっと一緒{いっしょ}にやろう？</div>
+    <img id="quitBuddy" alt="">
+    <h3>途中{とちゅう}でやめる？</h3>
+    <p id="quitInfo">ここまでの星{ほし}はもらえるよ</p>
+    <div class="modal-btns">
+      <button class="big-btn" id="btnKeep">続{つづ}ける！</button>
+      <button class="btn-soft" id="btnQuitYes">やめる</button>
+    </div>
+  </div>
+</div>
 <div class="toast" id="toast"></div>
 
-<script src="room.js?v=4"></script>
+<script src="room.js?v=6"></script>
 <script>
 (function(){
 'use strict';
@@ -625,7 +654,7 @@ $('btnParent').addEventListener('click', function(){ show('parent'); });
 var R = null;
 function startRound(){
   var pool = FACTS.slice();
-  R = {pool:pool, total:save.len, idx:0, used:{}, requeue:[], results:[], stars:0, combo:0,
+  R = {queue:[], pool:pool, total:save.len, idx:0, used:{}, requeue:[], results:[], stars:0, combo:0,
        bests:[], newPatto:[], lastKey:null, fact:null, input:'', state:'idle', t0:0,
        before:{}, maxExtra:3};
   pool.forEach(function(f){ R.before[f.k] = level(f.k); });
@@ -692,7 +721,7 @@ function nextQuestion(){
   $('hint').textContent = '';
   setLive(3);
   renderDots();
-  setTimeout(function(){
+  later(function(){
     if (R && R.fact === f && R.state === 'wait'){ R.state = 'ask'; R.t0 = performance.now(); tick(); }
   }, 180);
 }
@@ -729,7 +758,7 @@ function judge(){
     if (val === f.sum){
       R.state = 'busy'; SND.ok1();
       $('hint').textContent = 'そう！' + f.a + 'と' + f.b + 'で10だね';
-      setTimeout(advance, 800);
+      later(advance, 800);
     } else {
       SND.ng(); R.input = ''; var a2 = $('ans'); a2.textContent = ''; a2.className = 'ans ng';
     }
@@ -770,7 +799,7 @@ function judge(){
                                : tier === 2 ? pick(['速{はや}いね！','いい感{かん}じ！','もう少{すこ}しでパッと！'])
                                : pick(['正解{せいかい}！','次{つぎ}はもっと速{はや}く！','できたね！']);
     persist();
-    setTimeout(advance, tier === 3 ? 560 : 700);
+    later(advance, tier === 3 ? 560 : 700);
   } else {
     s.last = 'ng'; s.streak = 0; s.miss = (s.miss||0) + 1;
     R.combo = 0;
@@ -782,7 +811,7 @@ function judge(){
     $('hint').textContent = f.a + 'と' + f.b + 'で10。覚{おぼ}えて打{う}ってみよう！';
     $('playBubble').textContent = pick(['大丈夫{だいじょうぶ}！一緒{いっしょ}に覚{おぼ}えよう','次{つぎ}はきっとできるよ','惜{お}しい！']);
     persist();
-    setTimeout(function(){
+    later(function(){
       if (!R || R.fact !== f) return;
       R.state = 'retype'; R.input = '';
       var a3 = $('ans'); a3.textContent = ''; a3.className = 'ans ng';
@@ -790,6 +819,13 @@ function judge(){
   }
 }
 function advance(){ if (!R) return; R.idx++; nextQuestion(); }
+/* 一時停止中は あとまわしに する setTimeout */
+function later(fn, ms){
+  setTimeout(function(){
+    if (!R) return;
+    if (R.state === 'paused') R.queue.push(fn); else fn();
+  }, ms);
+}
 
 document.querySelectorAll('#pad button[data-d]').forEach(function(b){
   b.addEventListener('pointerdown', function(e){ e.preventDefault(); press(b.dataset.d); });
@@ -799,7 +835,28 @@ document.addEventListener('keydown', function(e){
   if (/^[0-9]$/.test(e.key)) press(e.key);
 });
 $('btnQuit').addEventListener('click', function(){
-  if (confirm('とちゅうでやめる？（ここまでのほしは もらえるよ）')) finishRound(true);
+  if (!R || R.state === 'paused') return;
+  SND.tap();
+  R.prevState = R.state; R.state = 'paused'; R.pausedAt = performance.now(); R.queue = [];
+  $('quitBuddy').src = buddy().img;
+  $('quitInfo').textContent = R.stars ? 'ここまでの星{ほし}⭐' + R.stars + 'はもらえるよ' : 'ここまでの星{ほし}はもらえるよ';
+  $('quitModal').classList.add('on');
+});
+$('btnKeep').addEventListener('click', function(){
+  if (!R || R.state !== 'paused') return;
+  SND.ok2();
+  $('quitModal').classList.remove('on');
+  R.t0 += performance.now() - R.pausedAt;
+  R.state = R.prevState;
+  var q = R.queue; R.queue = [];
+  if (R.state === 'ask') tick();
+  q.forEach(function(fn){ fn(); });
+});
+$('btnQuitYes').addEventListener('click', function(){
+  if (!R) return;
+  SND.tap();
+  $('quitModal').classList.remove('on');
+  finishRound(true);
 });
 
 function finishRound(quit){
