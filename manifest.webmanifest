@@ -1,0 +1,18 @@
+{
+  "id": "./",
+  "name": "10の仲良し",
+  "short_name": "10の仲良し",
+  "description": "ぬいぐるみと一緒に、足して10になる組み合わせをパッと覚えるアプリ",
+  "lang": "ja",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fff4f8",
+  "theme_color": "#ffb7cf",
+  "icons": [
+    { "src": "img/icon-192.png",      "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "img/icon-512.png",      "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "img/icon-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
