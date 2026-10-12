@@ -83,21 +83,21 @@ var DEFS = '<style>.iso *{vector-effect:non-scaling-stroke}</style><defs>' +
 
 /* ---------- テーマ・おきば ---------- */
 var THEMES = [
-  {id:'animal', name:'どうぶつの くに', icon:'🐰'},
-  {id:'sweets', name:'おかしの くに',   icon:'🍰'},
-  {id:'star',   name:'ほしぞらの くに', icon:'🌙'}
+  {id:'animal', name:'動物{どうぶつ}の国{くに}', icon:'🐰'},
+  {id:'sweets', name:'お菓子{かし}の国{くに}', icon:'🍰'},
+  {id:'star',   name:'星空{ほしぞら}の国{くに}', icon:'🌙'}
 ];
 var SLOTS = [
-  {id:'wall',   name:'かべがみ',   icon:'🎨'},
-  {id:'floor',  name:'ゆか',       icon:'🟫'},
+  {id:'wall',   name:'壁紙{かべがみ}',   icon:'🎨'},
+  {id:'floor',  name:'床{ゆか}',       icon:'🟫'},
   {id:'rug',    name:'ラグ',       icon:'🧶'},
-  {id:'window', name:'まど',       icon:'🌤️'},
-  {id:'deco',   name:'かべかざり', icon:'🕰️'},
+  {id:'window', name:'窓{まど}',       icon:'🌤️'},
+  {id:'deco',   name:'壁飾{かべかざ}り', icon:'🕰️'},
   {id:'bed',    name:'ベッド',     icon:'🛏️'},
   {id:'sofa',   name:'ソファ',     icon:'🛋️'},
   {id:'table',  name:'テーブル',   icon:'🍵'},
   {id:'light',  name:'ライト',     icon:'💡'},
-  {id:'small',  name:'こもの',     icon:'🌷'}
+  {id:'small',  name:'小物{こもの}',     icon:'🌷'}
 ];
 /* かべ・ゆか だけは「なし」に できない */
 var NEED = {wall:'base_wall', floor:'base_floor'};
@@ -392,51 +392,51 @@ function smallSakura(){
 
 /* ---------- アイテム いちらん ---------- */
 var ITEMS = [
-  {id:'base_wall',  theme:'base', slot:'wall',  name:'しろい かべ',   fill:'url(#p_base_wall)', base:true},
-  {id:'base_floor', theme:'base', slot:'floor', name:'もくめの ゆか', fill:'url(#p_base_floor)', base:true},
+  {id:'base_wall',  theme:'base', slot:'wall',  name:'白{しろ}い壁{かべ}',   fill:'url(#p_base_wall)', base:true},
+  {id:'base_floor', theme:'base', slot:'floor', name:'木目{もくめ}の床{ゆか}', fill:'url(#p_base_floor)', base:true},
 
-  {id:'an_wall',   theme:'animal', slot:'wall',   name:'こはなの かべがみ',   fill:'url(#p_an_wall)'},
-  {id:'an_floor',  theme:'animal', slot:'floor',  name:'きの ゆか',           fill:'url(#p_an_floor)'},
-  {id:'an_rug',    theme:'animal', slot:'rug',    name:'クローバーの ラグ',   draw:rugAnimal},
-  {id:'an_window', theme:'animal', slot:'window', name:'おはなばたけの まど', draw:winAnimal},
-  {id:'an_deco',   theme:'animal', slot:'deco',   name:'ねこの とけい',       draw:decoAnimal},
-  {id:'an_bed',    theme:'animal', slot:'bed',    name:'うさみみ ベッド',     draw:bedAnimal},
-  {id:'an_sofa',   theme:'animal', slot:'sofa',   name:'くまの ソファ',       draw:sofaAnimal},
-  {id:'an_table',  theme:'animal', slot:'table',  name:'きりかぶ テーブル',   draw:tableAnimal},
-  {id:'an_light',  theme:'animal', slot:'light',  name:'きのこ ランプ',       draw:lampAnimal},
-  {id:'an_small',  theme:'animal', slot:'small',  name:'おはなの うえきばち', draw:smallAnimal},
+  {id:'an_wall',   theme:'animal', slot:'wall',   name:'小花{こばな}の壁紙{かべがみ}',   fill:'url(#p_an_wall)'},
+  {id:'an_floor',  theme:'animal', slot:'floor',  name:'木{き}の床{ゆか}',           fill:'url(#p_an_floor)'},
+  {id:'an_rug',    theme:'animal', slot:'rug',    name:'クローバーのラグ',   draw:rugAnimal},
+  {id:'an_window', theme:'animal', slot:'window', name:'お花畑{はなばたけ}の窓{まど}', draw:winAnimal},
+  {id:'an_deco',   theme:'animal', slot:'deco',   name:'猫{ねこ}の時計{とけい}',       draw:decoAnimal},
+  {id:'an_bed',    theme:'animal', slot:'bed',    name:'うさ耳{みみ}ベッド',     draw:bedAnimal},
+  {id:'an_sofa',   theme:'animal', slot:'sofa',   name:'くまのソファ',       draw:sofaAnimal},
+  {id:'an_table',  theme:'animal', slot:'table',  name:'切{き}り株{かぶ}テーブル',   draw:tableAnimal},
+  {id:'an_light',  theme:'animal', slot:'light',  name:'きのこランプ',       draw:lampAnimal},
+  {id:'an_small',  theme:'animal', slot:'small',  name:'お花{はな}の植木鉢{うえきばち}', draw:smallAnimal},
 
-  {id:'sw_wall',   theme:'sweets', slot:'wall',   name:'いちごミルクの かべがみ', fill:'url(#p_sw_wall)'},
-  {id:'sw_floor',  theme:'sweets', slot:'floor',  name:'チョコの ゆか',           fill:'url(#p_sw_floor)'},
-  {id:'sw_rug',    theme:'sweets', slot:'rug',    name:'ビスケットの ラグ',       draw:rugSweets},
-  {id:'sw_window', theme:'sweets', slot:'window', name:'クッキーの まど',         draw:winSweets},
-  {id:'sw_deco',   theme:'sweets', slot:'deco',   name:'キャンディの とけい',     draw:decoSweets},
-  {id:'sw_bed',    theme:'sweets', slot:'bed',    name:'ケーキの ベッド',         draw:bedSweets},
-  {id:'sw_sofa',   theme:'sweets', slot:'sofa',   name:'マカロン ソファ',         draw:sofaSweets},
-  {id:'sw_table',  theme:'sweets', slot:'table',  name:'ドーナツ テーブル',       draw:tableSweets},
-  {id:'sw_light',  theme:'sweets', slot:'light',  name:'キャンディ ランプ',       draw:lampSweets},
+  {id:'sw_wall',   theme:'sweets', slot:'wall',   name:'いちごミルクの壁紙{かべがみ}', fill:'url(#p_sw_wall)'},
+  {id:'sw_floor',  theme:'sweets', slot:'floor',  name:'チョコの床{ゆか}',           fill:'url(#p_sw_floor)'},
+  {id:'sw_rug',    theme:'sweets', slot:'rug',    name:'ビスケットのラグ',       draw:rugSweets},
+  {id:'sw_window', theme:'sweets', slot:'window', name:'クッキーの窓{まど}',         draw:winSweets},
+  {id:'sw_deco',   theme:'sweets', slot:'deco',   name:'キャンディの時計{とけい}',     draw:decoSweets},
+  {id:'sw_bed',    theme:'sweets', slot:'bed',    name:'ケーキのベッド',         draw:bedSweets},
+  {id:'sw_sofa',   theme:'sweets', slot:'sofa',   name:'マカロンソファ',         draw:sofaSweets},
+  {id:'sw_table',  theme:'sweets', slot:'table',  name:'ドーナツテーブル',       draw:tableSweets},
+  {id:'sw_light',  theme:'sweets', slot:'light',  name:'キャンディランプ',       draw:lampSweets},
   {id:'sw_small',  theme:'sweets', slot:'small',  name:'いちごパフェ',            draw:smallSweets},
 
-  {id:'st_wall',   theme:'star', slot:'wall',   name:'ほしぞらの かべがみ', fill:'url(#p_st_wall)'},
-  {id:'st_floor',  theme:'star', slot:'floor',  name:'よぞらの ゆか',       fill:'url(#p_st_floor)'},
-  {id:'st_rug',    theme:'star', slot:'rug',    name:'まんげつの ラグ',     draw:rugStar},
-  {id:'st_window', theme:'star', slot:'window', name:'おつきさまの まど',   draw:winStar},
-  {id:'st_deco',   theme:'star', slot:'deco',   name:'せいざの え',         draw:decoStar},
-  {id:'st_bed',    theme:'star', slot:'bed',    name:'みかづきの ベッド',   draw:bedStar},
-  {id:'st_sofa',   theme:'star', slot:'sofa',   name:'くもの ソファ',       draw:sofaStar},
-  {id:'st_table',  theme:'star', slot:'table',  name:'ほしの テーブル',     draw:tableStar},
-  {id:'st_light',  theme:'star', slot:'light',  name:'ほしの ランプ',       draw:lampStar},
-  {id:'st_small',  theme:'star', slot:'small',  name:'ちきゅうぎ',          draw:smallStar},
+  {id:'st_wall',   theme:'star', slot:'wall',   name:'星空{ほしぞら}の壁紙{かべがみ}', fill:'url(#p_st_wall)'},
+  {id:'st_floor',  theme:'star', slot:'floor',  name:'夜空{よぞら}の床{ゆか}',       fill:'url(#p_st_floor)'},
+  {id:'st_rug',    theme:'star', slot:'rug',    name:'満月{まんげつ}のラグ',     draw:rugStar},
+  {id:'st_window', theme:'star', slot:'window', name:'お月{つき}さまの窓{まど}',   draw:winStar},
+  {id:'st_deco',   theme:'star', slot:'deco',   name:'星座{せいざ}の絵{え}',         draw:decoStar},
+  {id:'st_bed',    theme:'star', slot:'bed',    name:'三日月{みかづき}のベッド',   draw:bedStar},
+  {id:'st_sofa',   theme:'star', slot:'sofa',   name:'雲{くも}のソファ',       draw:sofaStar},
+  {id:'st_table',  theme:'star', slot:'table',  name:'星{ほし}のテーブル',     draw:tableStar},
+  {id:'st_light',  theme:'star', slot:'light',  name:'星{ほし}のランプ',       draw:lampStar},
+  {id:'st_small',  theme:'star', slot:'small',  name:'地球儀{ちきゅうぎ}',          draw:smallStar},
 
   /* はやさの とくべつ アイテム（⭐では でない） */
-  {id:'sp_chandelier', theme:'special', slot:'light',  name:'キラキラ シャンデリア', draw:chandelier,  hanging:true,
-   hint:'1かいの もんだいを ぜんぶ パッとで こたえる'},
-  {id:'sp_shooting',   theme:'special', slot:'window', name:'ながれぼしの まど',     draw:winShooting,
-   hint:'ぜんぶ せいかいで へいきん 1びょう いない'},
-  {id:'sp_trophy',     theme:'special', slot:'small',  name:'きんの トロフィー',     draw:smallTrophy,
-   hint:'9もん ぜんぶを「ばっちり」に する'},
-  {id:'sp_sakura',     theme:'special', slot:'small',  name:'さくらの き',           draw:smallSakura, big:true,
-   hint:'7にち つづけて あそぶ'}
+  {id:'sp_chandelier', theme:'special', slot:'light',  name:'キラキラシャンデリア', draw:chandelier,  hanging:true,
+   hint:'1回{かい}の問題{もんだい}を全部{ぜんぶ}パッとで答{こた}える'},
+  {id:'sp_shooting',   theme:'special', slot:'window', name:'流{なが}れ星{ぼし}の窓{まど}',     draw:winShooting,
+   hint:'全部{ぜんぶ}正解{せいかい}で平均{へいきん}1秒{びょう}以内{いない}'},
+  {id:'sp_trophy',     theme:'special', slot:'small',  name:'金{きん}のトロフィー',     draw:smallTrophy,
+   hint:'9問{もん}全部{ぜんぶ}を「ばっちり」にする'},
+  {id:'sp_sakura',     theme:'special', slot:'small',  name:'桜{さくら}の木{き}',           draw:smallSakura, big:true,
+   hint:'7日{にち}続{つづ}けて遊{あそ}ぶ'}
 ];
 var ITEM_BY_ID = {};
 ITEMS.forEach(function(it){ ITEM_BY_ID[it.id] = it; });

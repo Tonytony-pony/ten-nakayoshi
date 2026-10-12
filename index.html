@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta name="theme-color" content="#ffb7cf">
-<title>10の なかよし</title>
+<title>10の仲良し</title>
 <link rel="icon" href="img/plush_rabbit.png">
 <link rel="apple-touch-icon" href="img/plush_rabbit.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -153,6 +153,7 @@ h2{margin:0;font-size:22px;text-align:center;color:var(--deep)}
 .sparkle{position:fixed;pointer-events:none;font-size:22px;animation:spark 1.1s ease-out forwards;z-index:50}
 @keyframes spark{from{opacity:1;transform:translate(0,0) scale(1)}to{opacity:0;transform:translate(var(--dx),var(--dy)) scale(.4) rotate(180deg)}}
 
+rt{font-size:.5em;font-weight:700;letter-spacing:0}
 /* home 4 buttons */
 .sub-row.four{grid-template-columns:1fr 1fr}
 .four .sub-btn{display:flex;align-items:center;gap:6px;padding:12px 10px;text-align:left;font-size:15px;white-space:nowrap}
@@ -225,10 +226,10 @@ h2{margin:0;font-size:22px;text-align:center;color:var(--deep)}
       <span></span>
       <span class="star-pill">⭐ <span class="js-stars">0</span></span>
     </div>
-    <h1><small>ぬいぐるみと いっしょに</small>10の なかよし</h1>
+    <h1><small>ぬいぐるみと一緒{いっしょ}に</small>10の仲良{なかよ}し</h1>
     <div class="buddy-wrap home-buddy">
       <div class="sakura-bg"></div>
-      <div class="bubble" id="homeBubble">きょうも いっしょに がんばろう！</div>
+      <div class="bubble" id="homeBubble">今日{きょう}も一緒{いっしょ}に頑張{がんば}ろう！</div>
       <img class="buddy" id="homeBuddy" alt="">
     </div>
     <div class="card">
@@ -238,14 +239,15 @@ h2{margin:0;font-size:22px;text-align:center;color:var(--deep)}
         <span id="homeCount">0/9</span>
       </div>
     </div>
-    <button class="big-btn" id="btnStart">はじめる！</button>
+    <button class="big-btn" id="btnStart">始{はじ}める！</button>
     <div class="sub-row four">
       <button class="sub-btn" id="btnGift"><span class="ic">🎁</span><span>プレゼント<small id="giftCost">⭐40</small></span></button>
-      <button class="sub-btn" id="btnRoom"><span class="ic">🏠</span><span>おへや<small>もようがえ</small></span></button>
+      <button class="sub-btn" id="btnRoom"><span class="ic">🏠</span><span>お部屋{へや}<small>模様替{もようが}え</small></span></button>
       <button class="sub-btn" id="btnColl"><span class="ic">🏛️</span><span>コレクション<small id="collCount">0</small></span></button>
       <button class="sub-btn" id="btnMap"><span class="ic">🗺️</span><span>パッと<small>マップ</small></span></button>
     </div>
-    <button class="parent-link" id="btnParent">おうちの人へ（せってい・きろく）</button>
+    <div class="label" id="allBadge" style="display:none;margin:8px 0 0;color:var(--deep)">🔧 全アイテム保有モード中</div>
+    <button class="parent-link" id="btnParent">おうちの人{ひと}へ（設定{せってい}・記録{きろく}）</button>
   </section>
 
   <!-- ===== もんだい ===== -->
@@ -256,7 +258,7 @@ h2{margin:0;font-size:22px;text-align:center;color:var(--deep)}
       <span class="star-pill">⭐ <span id="roundStars">0</span></span>
     </div>
     <div class="play-buddy">
-      <div class="bubble" id="playBubble">パッと こたえてね！</div>
+      <div class="bubble" id="playBubble">パッと答{こた}えてね！</div>
       <img id="playBuddy" alt="">
     </div>
     <div class="q-card">
@@ -274,39 +276,39 @@ h2{margin:0;font-size:22px;text-align:center;color:var(--deep)}
 
   <!-- ===== けっか ===== -->
   <section class="screen" id="s-result">
-    <h2>おわり！ よく がんばったね</h2>
+    <h2>終{お}わり！よく頑張{がんば}ったね</h2>
     <div class="buddy-wrap" style="min-height:120px">
       <img class="buddy" id="resBuddy" style="height:120px" alt="">
     </div>
-    <div class="res-stars" id="resStars">+0 ⭐<small>もらった ほし</small></div>
+    <div class="res-stars" id="resStars">+0 ⭐<small>もらった星{ほし}</small></div>
     <div class="card"><ul class="res-list" id="resList"></ul></div>
     <div class="praise" id="resPraise"></div>
-    <button class="big-btn" id="btnResGift">🎁 プレゼントを あける</button>
+    <button class="big-btn" id="btnResGift">🎁 プレゼントを開{あ}ける</button>
     <div class="sub-row" style="grid-template-columns:1fr 1fr">
-      <button class="sub-btn" id="btnAgain"><span class="ic">🔁</span>もう いっかい</button>
-      <button class="sub-btn" id="btnHome"><span class="ic">🏠</span>おうちへ</button>
+      <button class="sub-btn" id="btnAgain"><span class="ic">🔁</span>もう一回{いっかい}</button>
+      <button class="sub-btn" id="btnHome"><span class="ic">🏠</span>お家{うち}へ</button>
     </div>
   </section>
 
   <!-- ===== マップ ===== -->
   <section class="screen" id="s-map">
     <div class="topbar"><button class="back" data-go="home">← もどる</button><span class="star-pill" id="mapCount">パッと 0/9</span></div>
-    <h2>パッと マップ</h2>
+    <h2>パッとマップ</h2>
     <div class="card"><div class="grid10" id="grid10"></div></div>
     <div class="legend">
       <span style="--c:var(--gray)">まだ</span>
-      <span style="--c:#cfe0ff">にがて</span>
-      <span style="--c:#fff0b3">もうすこし</span>
+      <span style="--c:#cfe0ff">苦手{にがて}</span>
+      <span style="--c:#fff0b3">もう少{すこ}し</span>
       <span style="--c:var(--pink2)">パッと</span>
       <span style="--c:var(--deep)">ばっちり</span>
     </div>
-    <div class="cell-info card" id="cellInfo">マスを おすと くわしく みられるよ</div>
+    <div class="cell-info card" id="cellInfo">マスを押{お}すと詳{くわ}しく見{み}られるよ</div>
   </section>
 
   <!-- ===== ぬいぐるみの へや ===== -->
   <section class="screen" id="s-room">
-    <div class="topbar"><button class="back" data-go="home">← もどる</button><span class="star-pill" id="roomCount">かぐ 0</span></div>
-    <h2>ぬいぐるみの へや</h2>
+    <div class="topbar"><button class="back" data-go="home">← もどる</button><span class="star-pill" id="roomCount">家具{かぐ} 0</span></div>
+    <h2>ぬいぐるみの部屋{へや}</h2>
     <div class="room-wrap" id="roomView"></div>
     <div class="slot-row" id="slotRow"></div>
     <div class="pick-row" id="pickRow"></div>
@@ -316,14 +318,14 @@ h2{margin:0;font-size:22px;text-align:center;color:var(--deep)}
   <!-- ===== コレクション べや ===== -->
   <section class="screen" id="s-coll">
     <div class="topbar"><button class="back" data-go="home">← もどる</button><span class="star-pill" id="collTotal">0</span></div>
-    <h2>コレクション べや</h2>
+    <h2>コレクション部屋{べや}</h2>
     <div class="chips" id="collJump">
       <button class="chip" data-jump="plush">🧸 ぬいぐるみ</button>
-      <button class="chip" data-jump="item">🛋️ かぐ</button>
-      <button class="chip" data-jump="special">🌟 とくべつ</button>
+      <button class="chip" data-jump="item">🛋️ 家具{かぐ}</button>
+      <button class="chip" data-jump="special">🌟 特別{とくべつ}</button>
     </div>
     <div class="gallery" id="gallery"></div>
-    <p class="label">よこに スクロールして みてね →<br>ぬいぐるみを さわると いっしょに あそぶ こに なるよ ♥</p>
+    <p class="label">横{よこ}にスクロールして見{み}てね →<br>ぬいぐるみを触{さわ}ると一緒{いっしょ}に遊{あそ}ぶ子{こ}になるよ ♥</p>
   </section>
 
   <!-- ===== プレゼント ===== -->
@@ -331,12 +333,12 @@ h2{margin:0;font-size:22px;text-align:center;color:var(--deep)}
     <div class="topbar"><button class="back" data-go="home">← もどる</button><span class="star-pill">⭐ <span class="js-stars">0</span></span></div>
     <div class="gift-tabs" id="giftTabs">
       <button data-tab="plush">🧸 ぬいぐるみ</button>
-      <button data-tab="item">🛋️ もようがえ</button>
+      <button data-tab="item">🛋️ 模様替{もようが}え</button>
     </div>
     <div class="gift-stage">
       <div id="giftClosed">
         <div class="box" id="giftBox">🎁</div>
-        <p id="giftMsg">はこを さわって あけてね</p>
+        <p id="giftMsg">箱{はこ}を触{さわ}って開{あ}けてね</p>
       </div>
       <div class="reveal" id="giftReveal">
         <img id="giftImg" alt="">
@@ -344,9 +346,9 @@ h2{margin:0;font-size:22px;text-align:center;color:var(--deep)}
         <div class="nm" id="giftName"></div>
         <div id="giftSub" style="font-size:15px;color:var(--ink2)"></div>
       </div>
-      <button class="big-btn" id="btnGiftNext" style="display:none">もう ひとつ あける</button>
-      <button class="sub-btn" id="btnGiftBuddy" style="display:none;width:100%"> ♥ この こと あそぶ</button>
-      <button class="sub-btn" id="btnGiftPlace" style="display:none;width:100%">🏠 おへやに かざる</button>
+      <button class="big-btn" id="btnGiftNext" style="display:none">もう一{ひと}つ開{あ}ける</button>
+      <button class="sub-btn" id="btnGiftBuddy" style="display:none;width:100%"> ♥ この子{こ}と遊{あそ}ぶ</button>
+      <button class="sub-btn" id="btnGiftPlace" style="display:none;width:100%">🏠 お部屋{へや}に飾{かざ}る</button>
     </div>
   </section>
 
@@ -374,6 +376,9 @@ h2{margin:0;font-size:22px;text-align:center;color:var(--deep)}
         <select id="setCost"><option value="20">20</option><option value="30">30</option><option value="40">40</option><option value="60">60</option></select></div>
       <div class="p-row">おと
         <select id="setSound"><option value="1">あり</option><option value="0">なし</option></select></div>
+      <div class="p-row">全アイテム保有モード
+        <select id="setAll"><option value="0">オフ</option><option value="1">オン</option></select></div>
+      <div style="font-size:12px;color:var(--ink2);line-height:1.5">オンの間だけ、ぬいぐるみと家具をすべて持っている状態で部屋・コレクションを確認できます。本当の記録（集めた物・⭐）は変わらず、オフに戻すと元に戻ります。</div>
     </div>
     <div class="card p-sec">
       <h3>きろく</h3>
@@ -401,20 +406,20 @@ h2{margin:0;font-size:22px;text-align:center;color:var(--deep)}
 
 /* ---------- ぬいぐるみ ---------- */
 var ANIMALS = [
-  ['rabbit','うさぎ'],['chick','ひよこ'],['elephant','ぞう'],['cat','ねこ'],['pig','ぶた'],['penguin','ぺんぎん'],
-  ['koala','こあら'],['panda','ぱんだ'],['cow','うし'],['fox','きつね'],['lion','ライオン'],['unicorn','ユニコーン']
+  ['rabbit','うさぎ'],['chick','ひよこ'],['elephant','象{ぞう}'],['cat','猫{ねこ}'],['pig','ぶた'],['penguin','ペンギン'],
+  ['koala','コアラ'],['panda','パンダ'],['cow','牛{うし}'],['fox','きつね'],['lion','ライオン'],['unicorn','ユニコーン']
 ];
 var SETS = [
-  {pre:'',   name:'どうぶつの くに', nick:''},
-  {pre:'B_', name:'おかしの くに',   nick:'おかしの '},
-  {pre:'C_', name:'ほしぞらの くに', nick:'ほしぞらの '},
-  {pre:'D_', name:'うみの くに',     nick:'うみの '},
-  {pre:'E_', name:'あきの もり',     nick:'あきの '},
-  {pre:'F_', name:'ゆきの くに',     nick:'ゆきの '},
-  {pre:'G_', name:'にじの くに',     nick:'にじの '},
-  {pre:'H_', name:'たからの くに',   nick:'たからの '},
-  {pre:'I_', name:'まほうの もり',   nick:'まほうの '},
-  {pre:'J_', name:'おまつりの くに', nick:'おまつりの '}
+  {pre:'',   name:'動物{どうぶつ}の国{くに}', nick:''},
+  {pre:'B_', name:'お菓子{かし}の国{くに}', nick:'お菓子{かし}の'},
+  {pre:'C_', name:'星空{ほしぞら}の国{くに}', nick:'星空{ほしぞら}の'},
+  {pre:'D_', name:'海{うみ}の国{くに}', nick:'海{うみ}の'},
+  {pre:'E_', name:'秋{あき}の森{もり}', nick:'秋{あき}の'},
+  {pre:'F_', name:'雪{ゆき}の国{くに}', nick:'雪{ゆき}の'},
+  {pre:'G_', name:'虹{にじ}の国{くに}', nick:'虹{にじ}の'},
+  {pre:'H_', name:'宝{たから}の国{くに}', nick:'宝{たから}の'},
+  {pre:'I_', name:'魔法{まほう}の森{もり}', nick:'魔法{まほう}の'},
+  {pre:'J_', name:'お祭{まつ}りの国{くに}', nick:'お祭{まつ}りの'}
 ];
 var PLUSH = [];
 SETS.forEach(function(s,si){
@@ -436,7 +441,7 @@ FACTS.forEach(function(f){ FACT_BY_KEY[f.k] = f; });
 var KEY = 'tenNakayoshi_v1';
 function defaults(){
   return {v:1, stars:0, owned:{rabbit:true}, buddy:'rabbit', stats:{},
-          T:2000, len:10, cost:40, sound:true, cfg:2, items:{}, room:{wall:'base_wall', floor:'base_floor'}, giftTab:'plush', daily:{}, lastAvg:0, rounds:0, starsTotal:0, opened:1};
+          T:2000, len:10, cost:40, sound:true, cfg:2, items:{}, room:{wall:'base_wall', floor:'base_floor'}, giftTab:'plush', allMode:false, daily:{}, lastAvg:0, rounds:0, starsTotal:0, opened:1};
 }
 var save = defaults();
 function load(){
@@ -547,15 +552,17 @@ function sparkle(x, y, n){
   }
 }
 function buddy(){ return PLUSH_BY_ID[save.buddy]; }
-function ownedCount(){ return Object.keys(save.owned).filter(function(k){ return PLUSH_BY_ID[k]; }).length; }
+function own(pid){ return !!save.allMode || !!save.owned[pid]; }
+function ownIt(id){ return !!save.allMode || !!save.items[id]; }
+function ownedCount(){ return save.allMode ? PLUSH.length : Object.keys(save.owned).filter(function(k){ return PLUSH_BY_ID[k]; }).length; }
 var ROOM_ITEMS = Room.ITEMS.filter(function(it){ return !it.base; });
-function hasItem(id){ var it = Room.ITEM_BY_ID[id]; return !!it && (it.base || !!save.items[id]); }
-function itemCount(){ return ROOM_ITEMS.filter(function(it){ return save.items[it.id]; }).length; }
+function hasItem(id){ var it = Room.ITEM_BY_ID[id]; return !!it && (it.base || ownIt(id)); }
+function itemCount(){ return ROOM_ITEMS.filter(function(it){ return ownIt(it.id); }).length; }
 /* もようがえの はこから でる くに（まえの くにを そろえると つぎが ひらく） */
 function itemTheme(){
   for (var i = 0; i < Room.THEMES.length; i++){
     var th = Room.THEMES[i].id;
-    if (ROOM_ITEMS.some(function(it){ return it.theme === th && !save.items[it.id]; })) return Room.THEMES[i];
+    if (ROOM_ITEMS.some(function(it){ return it.theme === th && !ownIt(it.id); })) return Room.THEMES[i];
   }
   return null;
 }
@@ -584,8 +591,8 @@ document.querySelectorAll('[data-go]').forEach(function(b){
 });
 
 var HOME_LINES = [
-  'きょうも いっしょに がんばろう！', 'パッと こたえると ほしが いっぱい！', 'ゆびを つかわずに できるかな？',
-  'きのうより はやく なれるかも！', 'あたらしい おともだち ほしいな〜', 'いっしょに あそべて うれしいな'
+  '今日{きょう}も一緒{いっしょ}に頑張{がんば}ろう！', 'パッと答{こた}えると星{ほし}がいっぱい！', '指{ゆび}を使{つか}わずにできるかな？',
+  '昨日{きのう}より速{はや}くなれるかも！', '新{あたら}しいお友達{ともだち}ほしいな〜', '一緒{いっしょ}に遊{あそ}べてうれしいな'
 ];
 var RENDER = {
   home: function(){
@@ -598,6 +605,7 @@ var RENDER = {
     $('giftCost').textContent = '⭐' + save.cost;
     $('btnGift').style.opacity = (canOpen('plush') || canOpen('item')) ? 1 : .55;
     $('collCount').textContent = collOwned() + ' / ' + collAll();
+    $('allBadge').style.display = save.allMode ? '' : 'none';
   },
   map: renderMap,
   room: renderRoomScreen,
@@ -720,7 +728,7 @@ function judge(){
   if (R.state === 'retype'){
     if (val === f.sum){
       R.state = 'busy'; SND.ok1();
-      $('hint').textContent = 'そう！ ' + f.a + ' と ' + f.b + ' で 10 だね';
+      $('hint').textContent = 'そう！' + f.a + 'と' + f.b + 'で10だね';
       setTimeout(advance, 800);
     } else {
       SND.ng(); R.input = ''; var a2 = $('ans'); a2.textContent = ''; a2.className = 'ans ng';
@@ -744,23 +752,23 @@ function judge(){
     var gain = tier, msgs = [];
     if (tier === 3){
       R.combo++; day.patto++;
-      if (R.combo >= 3){ gain += 1; msgs.push('れんぞく ' + R.combo + '！'); }
+      if (R.combo >= 3){ gain += 1; msgs.push('連続{れんぞく}' + R.combo + '！'); }
     } else R.combo = 0;
     if (prevBest && ms < prevBest - 150){
       gain += 1; R.bests.push({k:f.k, from:prevBest, to:ms});
     }
     R.stars += gain;
     R.results[R.idx] = {k:f.k, ok:true, ms:ms, tier:tier, cls:'ok'+tier};
-    var label = tier === 3 ? 'パッと！' : tier === 2 ? 'はやい！' : 'せいかい！';
+    var label = tier === 3 ? 'パッと！' : tier === 2 ? '速{はや}い！' : '正解{せいかい}！';
     var pop = $('pop');
     pop.innerHTML = label + '<br><span style="font-size:26px">+' + gain + '⭐' + (msgs.length ? ' ' + msgs.join(' ') : '') + '</span>';
     pop.classList.remove('show'); void pop.offsetWidth; pop.classList.add('show');
     SND['ok' + tier]();
     $('roundStars').textContent = R.stars;
     var pb = $('playBuddy'); pb.classList.remove('bounce'); void pb.offsetWidth; pb.classList.add('bounce');
-    $('playBubble').textContent = tier === 3 ? pick(['すごーい！','パッと できた！','かっこいい！','てんさい！','その ちょうし！'])
-                               : tier === 2 ? pick(['はやいね！','いいかんじ！','もうすこしで パッと！'])
-                               : pick(['せいかい！','つぎは もっと はやく！','できたね！']);
+    $('playBubble').textContent = tier === 3 ? pick(['すごーい！','パッとできた！','かっこいい！','天才{てんさい}！','その調子{ちょうし}！'])
+                               : tier === 2 ? pick(['速{はや}いね！','いい感{かん}じ！','もう少{すこ}しでパッと！'])
+                               : pick(['正解{せいかい}！','次{つぎ}はもっと速{はや}く！','できたね！']);
     persist();
     setTimeout(advance, tier === 3 ? 560 : 700);
   } else {
@@ -771,8 +779,8 @@ function judge(){
     if (R.maxExtra > 0){ R.total++; R.maxExtra--; }
     SND.ng();
     var ans = $('ans'); ans.textContent = f.sum; ans.className = 'ans ng';
-    $('hint').textContent = f.a + ' と ' + f.b + ' で 10。おぼえて うってみよう！';
-    $('playBubble').textContent = pick(['だいじょうぶ！ いっしょに おぼえよう','つぎは きっと できるよ','おしい！']);
+    $('hint').textContent = f.a + 'と' + f.b + 'で10。覚{おぼ}えて打{う}ってみよう！';
+    $('playBubble').textContent = pick(['大丈夫{だいじょうぶ}！一緒{いっしょ}に覚{おぼ}えよう','次{つぎ}はきっとできるよ','惜{お}しい！']);
     persist();
     setTimeout(function(){
       if (!R || R.fact !== f) return;
@@ -791,7 +799,7 @@ document.addEventListener('keydown', function(e){
   if (/^[0-9]$/.test(e.key)) press(e.key);
 });
 $('btnQuit').addEventListener('click', function(){
-  if (confirm('とちゅうで やめる？（ここまでの ほしは もらえるよ）')) finishRound(true);
+  if (confirm('とちゅうでやめる？（ここまでのほしは もらえるよ）')) finishRound(true);
 });
 
 function finishRound(quit){
@@ -825,24 +833,24 @@ function finishRound(quit){
 
   var patto = res.filter(function(r){ return r.tier === 3; }).length;
   var li = [];
-  li.push(['パッと こたえた', patto + ' / ' + res.length + ' もん']);
-  li.push(['せいかい', okList.length + ' / ' + res.length + ' もん']);
-  if (avg) li.push(['へいきん じかん', sec(avg) + ' びょう']);
-  li.push(['こたえた ほし', '+' + R.stars + '⭐']);
-  if (perfectBonus) li.push(['ぜんもん せいかい ボーナス', '+' + perfectBonus + '⭐']);
-  if (pattoBonus) li.push(['あたらしく パッとに なった', '+' + pattoBonus + '⭐']);
+  li.push(['パッと答{こた}えた', patto + ' / ' + res.length + '問{もん}']);
+  li.push(['正解{せいかい}', okList.length + ' / ' + res.length + '問{もん}']);
+  if (avg) li.push(['平均{へいきん}時間{じかん}', sec(avg) + '秒{びょう}']);
+  li.push(['答{こた}えた星{ほし}', '+' + R.stars + '⭐']);
+  if (perfectBonus) li.push(['全問{ぜんもん}正解{せいかい}ボーナス', '+' + perfectBonus + '⭐']);
+  if (pattoBonus) li.push(['新{あたら}しくパッとになった', '+' + pattoBonus + '⭐']);
   $('resList').innerHTML = li.map(function(x){ return '<li><span>' + x[0] + '</span><b>' + x[1] + '</b></li>'; }).join('');
-  $('resStars').innerHTML = '+' + total + ' ⭐<small>もらった ほし（ぜんぶで ' + save.stars + '⭐）</small>';
+  $('resStars').innerHTML = '+' + total + ' ⭐<small>もらった星{ほし}（全部{ぜんぶ}で' + save.stars + '⭐）</small>';
 
   var praise = [];
   if (avg && prevAvg && !quit){
     var diff = prevAvg - avg;
-    if (diff > 100) praise.push('まえより <b>' + sec(diff) + 'びょう</b> はやく なったよ！ 🚀');
+    if (diff > 100) praise.push('前{まえ}より<b>' + sec(diff) + '秒{びょう}</b>速{はや}くなったよ！🚀');
   }
-  if (newPatto.length) praise.push('パッとに なった！ ' + newPatto.map(function(f){ return '<span class="tag">' + f.a + 'と' + f.b + '</span>'; }).join(''));
-  if (R.bests.length) praise.push('じこベスト こうしん！ ' + R.bests.map(function(b){ return '<span class="tag">' + FACT_BY_KEY[b.k].a + 'と' + FACT_BY_KEY[b.k].b + ' ' + sec(b.from) + '→' + sec(b.to) + 'びょう</span>'; }).join(''));
-  if (gotSp.length) praise.unshift('🌟 とくべつ アイテム ゲット！ ' + gotSp.map(function(it){ return '<span class="tag">' + it.name + '</span>'; }).join('') + '<br><small>おへやで かざってね</small>');
-  if (!praise.length) praise.push(pick(['つづけると どんどん はやく なるよ！','きょうも よく がんばったね 🌸','パッとを ふやして いこう！']));
+  if (newPatto.length) praise.push('パッとになった！ ' + newPatto.map(function(f){ return '<span class="tag">' + f.a + 'と' + f.b + '</span>'; }).join(''));
+  if (R.bests.length) praise.push('自己{じこ}ベスト更新{こうしん}！ ' + R.bests.map(function(b){ return '<span class="tag">' + FACT_BY_KEY[b.k].a + 'と' + FACT_BY_KEY[b.k].b + ' ' + sec(b.from) + '→' + sec(b.to) + '秒{びょう}</span>'; }).join(''));
+  if (gotSp.length) praise.unshift('🌟特別{とくべつ}アイテムゲット！ ' + gotSp.map(function(it){ return '<span class="tag">' + it.name + '</span>'; }).join('') + '<br><small>お部屋{へや}で飾{かざ}ってね</small>');
+  if (!praise.length) praise.push(pick(['続{つづ}けるとどんどん速{はや}くなるよ！','今日{きょう}もよく頑張{がんば}ったね🌸','パッとを増{ふ}やしていこう！']));
   $('resPraise').innerHTML = praise.join('<br>');
   $('resBuddy').src = buddy().img;
   var can = canOpen('plush') || canOpen('item');
@@ -859,17 +867,17 @@ $('btnResGift').addEventListener('click', function(){ SND.tap(); show('gift'); }
 function renderMap(){
   var html = FACTS.map(function(f){
     var lv = level(f.k);
-    return '<button class="cell l' + lv + '" data-k="' + f.k + '">' + f.a + ' と ' + f.b + (lv === 4 ? '<small>✿</small>' : '') + '</button>';
+    return '<button class="cell l' + lv + '" data-k="' + f.k + '">' + f.a + 'と' + f.b + (lv === 4 ? '<small>✿</small>' : '') + '</button>';
   }).join('');
   $('grid10').innerHTML = html;
   $('mapCount').textContent = 'パッと ' + pattoCount() + '/' + FACTS.length;
-  $('cellInfo').textContent = 'あわせて 10 に なる なかよしだよ。おすと くわしく みられるよ';
+  $('cellInfo').textContent = '合{あ}わせて10になる仲良{なかよ}しだよ。押{お}すと詳{くわ}しく見{み}られるよ';
   $('grid10').querySelectorAll('.cell').forEach(function(c){
     c.addEventListener('click', function(){
       var k = c.dataset.k, s = save.stats[k], f = FACT_BY_KEY[k], lv = level(k);
-      var names = ['まだ やってないよ','にがて… つぎ がんばろう！','もうすこしで パッと！','パッと できる！','ばっちり おぼえた！'];
+      var names = ['まだやってないよ','苦手{にがて}…次{つぎ}頑張{がんば}ろう！','もう少{すこ}しでパッと！','パッとできる！','ばっちり覚{おぼ}えた！'];
       var t = f.a + ' + ' + f.b + ' = 10　' + names[lv];
-      if (s && s.t && s.t.length) t += '<br>さいきんの へいきん ' + sec(avgTime(s)) + 'びょう ／ ベスト ' + sec(s.best) + 'びょう';
+      if (s && s.t && s.t.length) t += '<br>最近{さいきん}の平均{へいきん}' + sec(avgTime(s)) + '秒{びょう} ／ ベスト' + sec(s.best) + '秒{びょう}';
       $('cellInfo').innerHTML = t;
     });
   });
@@ -878,7 +886,7 @@ function renderMap(){
 /* ---------- ぬいぐるみの くに ---------- */
 function unlockedSet(){
   for (var si = 0; si < SETS.length; si++){
-    var miss = PLUSH.some(function(p){ return p.set === si && !save.owned[p.id]; });
+    var miss = PLUSH.some(function(p){ return p.set === si && !own(p.id); });
     if (miss) return si;
   }
   return SETS.length - 1;
@@ -888,7 +896,7 @@ function unlockedSet(){
 var roomSlot = 'wall';
 function renderRoomScreen(){
   $('roomView').innerHTML = Room.renderRoom(save.room, buddy().img);
-  $('roomCount').textContent = 'かぐ ' + itemCount() + ' / ' + ROOM_ITEMS.length;
+  $('roomCount').textContent = '家具{かぐ} ' + itemCount() + ' / ' + ROOM_ITEMS.length;
   $('slotRow').innerHTML = Room.SLOTS.map(function(sl){
     return '<button data-slot="' + sl.id + '" class="' + (sl.id === roomSlot ? 'on' : '') + '"><b>' + sl.icon + '</b>' + sl.name + '</button>';
   }).join('');
@@ -913,13 +921,13 @@ function renderRoomScreen(){
       $('pickRow').scrollLeft = x;
     });
   });
-  var rest = ROOM_ITEMS.filter(function(it){ return it.slot === roomSlot && !save.items[it.id]; });
+  var rest = ROOM_ITEMS.filter(function(it){ return it.slot === roomSlot && !ownIt(it.id); });
   var nBox = rest.filter(function(it){ return it.theme !== 'special'; }).length, nSp = rest.length - nBox;
   var slName = Room.SLOTS.filter(function(sl){ return sl.id === roomSlot; })[0].name;
   var info = [];
-  if (nBox) info.push('🎁もようがえの はこで あと ' + nBox + 'こ');
-  if (nSp) info.push('🌟とくべつ あと ' + nSp + 'こ');
-  $('pickInfo').textContent = info.length ? '「' + slName + '」は ' + info.join('、') : '「' + slName + '」は ぜんぶ あつめたよ！';
+  if (nBox) info.push('🎁模様替{もようが}えの箱{はこ}で、あと' + nBox + '個{こ}');
+  if (nSp) info.push('🌟特別{とくべつ}が、あと' + nSp + '個{こ}');
+  $('pickInfo').textContent = info.length ? '「' + slName + '」は' + info.join('、') : '「' + slName + '」は全部{ぜんぶ}集{あつ}めたよ！';
 }
 
 /* ---------- コレクション べや ---------- */
@@ -935,37 +943,37 @@ function renderColl(){
   var html = '';
   SETS.forEach(function(st, si){
     var cells = PLUSH.filter(function(p){ return p.set === si; }).map(function(p){
-      var own = !!save.owned[p.id];
-      return {own:own, html:'<div class="gcell' + (own ? '' : ' no') + (save.buddy === p.id ? ' buddy-on' : '') + '" data-pid="' + p.id + '"><img src="' + p.img + '" alt="" loading="lazy"></div>'};
+      var has = own(p.id);
+      return {own:has, html:'<div class="gcell' + (has ? '' : ' no') + (save.buddy === p.id ? ' buddy-on' : '') + '" data-pid="' + p.id + '"><img src="' + p.img + '" alt="" loading="lazy"></div>'};
     });
     html += cabinet(si === 0 ? 'plush' : '', '🧸 ' + st.name, 4, cells);
   });
   function itemCells(list){
     return list.map(function(it){
-      var own = !!save.items[it.id];
-      return {own:own, html:'<div class="gcell' + (own ? '' : ' no') + '" data-iid="' + it.id + '">' + Room.thumb(it) + '</div>'};
+      var has = ownIt(it.id);
+      return {own:has, html:'<div class="gcell' + (has ? '' : ' no') + '" data-iid="' + it.id + '">' + Room.thumb(it) + '</div>'};
     });
   }
   Room.THEMES.forEach(function(th, i){
-    html += cabinet(i === 0 ? 'item' : '', th.icon + ' ' + th.name + 'の かぐ', 5, itemCells(ROOM_ITEMS.filter(function(it){ return it.theme === th.id; })));
+    html += cabinet(i === 0 ? 'item' : '', th.icon + ' ' + th.name + 'の家具{かぐ}', 5, itemCells(ROOM_ITEMS.filter(function(it){ return it.theme === th.id; })));
   });
-  html += cabinet('special', '🌟 とくべつ', 4, itemCells(ROOM_ITEMS.filter(function(it){ return it.theme === 'special'; })));
+  html += cabinet('special', '🌟 特別{とくべつ}', 4, itemCells(ROOM_ITEMS.filter(function(it){ return it.theme === 'special'; })));
   $('gallery').innerHTML = html;
   $('gallery').querySelectorAll('.gcell').forEach(function(el){
     el.addEventListener('click', function(){
       var pid = el.dataset.pid, iid = el.dataset.iid;
       if (pid){
-        if (!save.owned[pid]) { toast('🧸 ぬいぐるみの はこから でるよ'); return; }
+        if (!own(pid)) { toast('🧸 ぬいぐるみの箱{はこ}から出{で}るよ'); return; }
         save.buddy = pid; persist(); SND.ok2();
-        toast(PLUSH_BY_ID[pid].name + ' と あそぶよ ♥');
+        toast(PLUSH_BY_ID[pid].name + 'と遊{あそ}ぶよ ♥');
         $('gallery').querySelectorAll('.buddy-on').forEach(function(x){ x.classList.remove('buddy-on'); });
         el.classList.add('buddy-on');
         return;
       }
       var it = Room.ITEM_BY_ID[iid];
-      if (save.items[iid]) toast(it.name + '（おへやで かざれるよ）');
-      else if (it.hint) toast('🌟 ' + it.hint + 'と もらえるよ');
-      else toast('🛋️ もようがえの はこから でるよ');
+      if (ownIt(iid)) toast(it.name + '（お部屋{へや}で飾{かざ}れるよ）');
+      else if (it.hint) toast('🌟 ' + it.hint + 'と、もらえるよ');
+      else toast('🛋️ 模様替{もようが}えの箱{はこ}から出{で}るよ');
     });
   });
 }
@@ -992,11 +1000,11 @@ function renderGift(){
   box.textContent = tab === 'item' ? '📦' : '🎁';
   if (!left){
     box.textContent = '🏆';
-    msg.innerHTML = tab === 'item' ? 'いまある かぐは ぜんぶ あつめたよ！<br><small>つぎの くには じゅんびちゅう…</small>' : 'ぬいぐるみを ぜんぶ あつめたよ！<br>すごすぎる〜！';
+    msg.innerHTML = tab === 'item' ? 'いまある家具{かぐ}は全部{ぜんぶ}集{あつ}めたよ！<br><small>次{つぎ}の国{くに}は準備中{じゅんびちゅう}…</small>' : 'ぬいぐるみを全部{ぜんぶ}集{あつ}めたよ！<br>すごすぎる〜！';
   } else if (save.stars >= save.cost){
-    msg.innerHTML = 'はこを さわって あけてね（⭐' + save.cost + '）' + (tab === 'item' ? '<br><small>' + itemTheme().icon + ' ' + itemTheme().name + 'の かぐが でるよ</small>' : '');
+    msg.innerHTML = '箱{はこ}を触{さわ}って開{あ}けてね（⭐' + save.cost + '）' + (tab === 'item' ? '<br><small>' + itemTheme().icon + ' ' + itemTheme().name + 'の家具{かぐ}が出{で}るよ</small>' : '');
   } else {
-    msg.innerHTML = 'あと <b>⭐' + (save.cost - save.stars) + '</b> で あけられるよ<br><small>パッと こたえると ほしが たくさん もらえるよ！</small>';
+    msg.innerHTML = 'あと<b>⭐' + (save.cost - save.stars) + '</b>で開{あ}けられるよ<br><small>パッと答{こた}えると星{ほし}がたくさんもらえるよ！</small>';
   }
 }
 $('giftTabs').querySelectorAll('button').forEach(function(b){
@@ -1018,7 +1026,7 @@ $('giftBox').addEventListener('click', function(){
     var inSet = PLUSH.filter(function(p){ return p.set === got.set; });
     var have = inSet.filter(function(p){ return save.owned[p.id]; }).length;
     sub = SETS[got.set].name + ' ' + have + '/' + inSet.length;
-    if (have === inSet.length && got.set < SETS.length - 1) sub += '　コンプリート！ つぎは「' + SETS[got.set+1].name + '」が ひらいたよ！';
+    if (have === inSet.length && got.set < SETS.length - 1) sub += '　コンプリート！次{つぎ}は「' + SETS[got.set+1].name + '」が開{ひら}いたよ！';
     name = got.name;
   } else {
     var th = itemTheme();
@@ -1026,9 +1034,9 @@ $('giftBox').addEventListener('click', function(){
     save.items[got.id] = true;
     var inTh = ROOM_ITEMS.filter(function(it){ return it.theme === th.id; });
     var haveT = inTh.filter(function(it){ return save.items[it.id]; }).length;
-    sub = th.name + 'の かぐ ' + haveT + '/' + inTh.length;
+    sub = th.name + 'の家具{かぐ} ' + haveT + '/' + inTh.length;
     var nx = itemTheme();
-    if (haveT === inTh.length) sub += nx ? '　コンプリート！ つぎは「' + nx.name + '」が ひらいたよ！' : '　コンプリート！';
+    if (haveT === inTh.length) sub += nx ? '　コンプリート！次{つぎ}は「' + nx.name + '」が開{ひら}いたよ！' : '　コンプリート！';
     name = got.name;
   }
   save.stars -= save.cost; save.opened++;
@@ -1041,7 +1049,7 @@ $('giftBox').addEventListener('click', function(){
     $('giftClosed').style.display = 'none';
     if (tab === 'plush'){ $('giftImg').src = got.img; $('giftImg').style.display = ''; $('giftThumb').innerHTML = ''; }
     else { $('giftImg').style.display = 'none'; $('giftThumb').innerHTML = Room.thumb(got); }
-    $('giftName').textContent = name + ' が きたよ！';
+    $('giftName').textContent = name + 'が来{き}たよ！';
     $('giftSub').textContent = sub;
     $('giftReveal').classList.add('on');
     document.querySelectorAll('.js-stars').forEach(function(e){ e.textContent = save.stars; });
@@ -1056,7 +1064,7 @@ $('btnGiftNext').addEventListener('click', function(){ SND.tap(); renderGift(); 
 $('btnGiftBuddy').addEventListener('click', function(){
   if (!lastGift || lastGift.tab !== 'plush') return;
   save.buddy = lastGift.item.id; persist(); SND.ok2();
-  toast(lastGift.item.name + ' と あそぶよ ♥');
+  toast(lastGift.item.name + 'と遊{あそ}ぶよ ♥');
   show('home');
 });
 $('btnGiftPlace').addEventListener('click', function(){
@@ -1072,6 +1080,7 @@ function renderParent(){
   $('setLen').value = String(save.len);
   $('setCost').value = String(save.cost);
   $('setSound').value = save.sound ? '1' : '0';
+  $('setAll').value = save.allMode ? '1' : '0';
   var seen = FACTS.filter(function(f){ return level(f.k) > 0; }).length;
   var lvCount = [0,0,0,0,0];
   FACTS.forEach(function(f){ lvCount[level(f.k)]++; });
@@ -1099,6 +1108,19 @@ $('setT').addEventListener('change', function(e){ save.T = +e.target.value; pers
 $('setLen').addEventListener('change', function(e){ save.len = +e.target.value; persist(); });
 $('setCost').addEventListener('change', function(e){ save.cost = +e.target.value; persist(); });
 $('setSound').addEventListener('change', function(e){ save.sound = e.target.value === '1'; persist(); });
+$('setAll').addEventListener('change', function(e){
+  save.allMode = e.target.value === '1';
+  if (!save.allMode){
+    /* もどすとき：ほんとうは 持っていない ものを へやと いっしょの こから はずす */
+    Room.SLOTS.forEach(function(sl){
+      var id = save.room[sl.id];
+      if (id && !hasItem(id)){ if (Room.NEED[sl.id]) save.room[sl.id] = Room.NEED[sl.id]; else delete save.room[sl.id]; }
+    });
+    if (!save.owned[save.buddy]) save.buddy = Object.keys(save.owned).filter(function(k){ return PLUSH_BY_ID[k]; })[0] || 'rabbit';
+  }
+  persist(); renderParent();
+  toast(save.allMode ? '全アイテム保有モードをオンにしました' : '全アイテム保有モードをオフにしました（元の状態に戻りました）');
+});
 $('btnExport').addEventListener('click', function(){
   var txt = btoa(unescape(encodeURIComponent(JSON.stringify(save))));
   $('pData').value = txt;
@@ -1125,6 +1147,32 @@ $('btnReset').addEventListener('click', function(){
 });
 
 /* ---------- はじまり ---------- */
+/* ---------- ふりがな：「漢字{かな}」を ルビに する ---------- */
+var FU_HAS = /[一-龥々]\{/, FU_RE = /([一-龥々]+)\{([^}]+)\}/g;
+function fuNode(root){
+  var w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT), list = [], n;
+  while ((n = w.nextNode())) if (FU_HAS.test(n.nodeValue)) list.push(n);
+  list.forEach(function(t){
+    var par = t.parentNode;
+    if (!par || /^(SCRIPT|STYLE|TEXTAREA|OPTION)$/.test(par.nodeName)) return;
+    var tmp = document.createElement('span');
+    tmp.innerHTML = t.nodeValue.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(FU_RE, '<ruby>$1<rt>$2</rt></ruby>');
+    var frag = document.createDocumentFragment();
+    while (tmp.firstChild) frag.appendChild(tmp.firstChild);
+    par.replaceChild(frag, t);
+  });
+}
+new MutationObserver(function(ms){
+  ms.forEach(function(m){
+    if (m.type === 'characterData'){ if (m.target.parentNode) fuNode(m.target.parentNode); return; }
+    m.addedNodes.forEach(function(a){
+      if (a.nodeType === 3){ if (a.parentNode) fuNode(a.parentNode); }
+      else if (a.nodeType === 1) fuNode(a);
+    });
+  });
+}).observe(document.body, {childList:true, subtree:true, characterData:true});
+fuNode(document.body);
+
 Room.installDefs();
 load();
 show('home');
