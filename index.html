@@ -79,10 +79,11 @@ h2{margin:0;font-size:22px;text-align:center;color:var(--deep)}
 .dots i{width:11px;height:11px;border-radius:50%;background:var(--gray);display:block}
 .dots i.ok3{background:var(--deep)} .dots i.ok2{background:var(--pink)} .dots i.ok1{background:var(--pink2)}
 .dots i.ng{background:var(--sky)} .dots i.now{outline:3px solid var(--pink);outline-offset:1px}
-.play-buddy{display:flex;align-items:flex-end;justify-content:center;gap:6px;min-height:96px;position:relative}
-.play-buddy img{height:96px}
-.play-buddy .bubble{position:static;transform:none;margin-bottom:40px}
-.play-buddy .bubble::after{display:none}
+/* ふきだしは キャラの うえ。セリフの ながさで キャラが うごかないように まんなか こてい */
+.play-buddy{display:flex;flex-direction:column;align-items:center;gap:10px;position:relative}
+.play-buddy img{height:88px}
+.play-buddy .bubble{position:relative;left:auto;transform:none;max-width:100%;white-space:nowrap;text-align:center;padding:6px 16px}
+.play-buddy .bubble::after{left:50%;bottom:-8px;margin-left:-8px;border:8px solid transparent;border-top-color:#fff;border-bottom:0}
 .q-card{background:var(--card);border-radius:28px;padding:14px 10px 12px;box-shadow:var(--shadow);text-align:center;position:relative;overflow:hidden}
 .q{font-size:clamp(40px,13vw,64px);font-weight:800;letter-spacing:.02em;line-height:1.15;display:flex;justify-content:center;align-items:center;gap:clamp(4px,1.6vw,10px)}
 .q .op{color:var(--pink)}
@@ -167,7 +168,7 @@ h2{margin:0;font-size:22px;text-align:center;color:var(--deep)}
 
 @media (max-height:700px){
   .q{font-size:clamp(40px,12vw,52px)} .ans{height:clamp(56px,16vw,66px);min-width:clamp(56px,16vw,66px)} .pad button{height:58px;font-size:30px}
-  .play-buddy{min-height:72px} .play-buddy img{height:72px} .buddy{height:120px} .buddy-wrap{min-height:120px}
+  .play-buddy img{height:68px} .play-buddy{gap:8px} .buddy{height:120px} .buddy-wrap{min-height:120px}
 }
 </style>
 </head>
@@ -210,8 +211,8 @@ h2{margin:0;font-size:22px;text-align:center;color:var(--deep)}
       <span class="star-pill">⭐ <span id="roundStars">0</span></span>
     </div>
     <div class="play-buddy">
-      <img id="playBuddy" alt="">
       <div class="bubble" id="playBubble">パッと こたえてね！</div>
+      <img id="playBuddy" alt="">
     </div>
     <div class="q-card">
       <div class="q"><span id="qa">3</span><span class="op">+</span><span class="ans" id="ans"></span><span class="op">=</span><span class="ten">10</span></div>
